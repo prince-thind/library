@@ -11,7 +11,7 @@
         <h1>Library</h1>
         <div class="status-bar">
             <p class="books-total">Total Books: 0</p>
-            <p class="add-book">add Book</p>
+            <button class="add-book">Add Book</button>
             <p class="books-read">Books Read: 0</p>
         </div>
     </header>
@@ -22,9 +22,36 @@
                 <div class="title">Title</div>
                 <div class="author">Author: blah</div>
                 <div class="pages">Pages:0</div>
+                <div class="read">Read:yes</div>
+                <button class="remove">Remove</button>
+            </div>
+            <div class="card">
+                <div class="title">Title</div>
+                <div class="author">Author: blah</div>
+                <div class="pages">Pages:0</div>
+                <div class="read">Read:yes</div>
+                <button class="remove">Remove</button>
             </div>
         </div>
     </main>
+    <!-- option to add book-->
+    <div class="menu">
+        <h2 class="input-heading">Please Input details about the Book</h2>
+    <form class="form">
+        <label for="input-title">Title:</label>
+        <input type="text" id="input-title" name="input-title">
+        <label for="input-author">Author:</label>
+        <input type="text" id="input-author" name="input-author">
+        <label for="input-pages">Number of Pages:</label>
+        <input type="text" id="input-pages" name="input-pages">
+        <label for="input-read">Read:</label>
+        <input type="text" id="input-read" name="input-read">
+      </form>
+      <div class="buttons">
+        <button class="submit">Submit</button>
+        <button class="cancel">Cancel</button>
+      </div>
+      </div>
 </body>
 <script src="script.js"></script>
 
