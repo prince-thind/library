@@ -19,12 +19,14 @@ addButton.addEventListener("click", takeInput);
 createButton.addEventListener("click", makeBook);
 cancelButton.addEventListener("click", cancel);
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.id = id++;
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.id = id++;
+  }
 }
 
 function takeInput() {
@@ -98,7 +100,7 @@ function displayBooks() {
 function updateStatusBar() {
   let total = books.length;
   let read = books.filter((book) => {
-    return book.read == "yes" || book.read =="true";
+    return book.read == "yes" || book.read == "true";
   }).length;
 
   totalBooks.textContent = `Total Books: ${total}`;
