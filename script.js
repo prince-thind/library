@@ -13,11 +13,22 @@ const inputReadYes = document.querySelector("#input-read-yes");
 const cardContainer = document.querySelector(".card-container");
 const removeCard = document.querySelector(".remove");
 
-const books = [];
+let books = [];
 
 addButton.addEventListener("click", takeInput);
 createButton.addEventListener("click", makeBook);
 cancelButton.addEventListener("click", cancel);
+
+initialize();
+
+function initialize() {
+  if (localStorage.hasOwnProperty("local-books")) {
+    const localBooks = localStorage.getItem("local-books");
+    books = JSON.parse(localBooks);
+    if (!Array.isArray(books)) books = [];
+    displayBooks();
+  }
+}
 
 class Book {
   constructor(title, author, pages, read) {
@@ -41,6 +52,7 @@ function makeBook() {
   const book = new Book(title, author, pages, read);
   books.push(book);
   displayBooks();
+  updateLocalStorage(books);
 
   menuDiv.classList.toggle("hidden");
   reset();
@@ -55,6 +67,7 @@ function removeBook(event) {
   let index = event.target.parentElement.getAttribute("data-id");
   books.splice(index, 1);
   displayBooks();
+  updateLocalStorage(books);
 }
 
 function displayBooks() {
@@ -77,7 +90,7 @@ function displayBooks() {
     title.textContent = book.title || "??";
     author.textContent = "Author: " + book.author;
     pages.textContent = "Pages: " + book.pages;
-    read.textContent = book.read ? "Read: True" : "Read:No";
+    read.textContent = book.read ? "Read: Yes" : "Read:No";
     remove.textContent = "Remove?";
 
     card.setAttribute("data-id", books.indexOf(book));
@@ -109,7 +122,6 @@ function reset() {
   inputTitle.value = "";
   inputAuthor.value = "";
   inputPages.value = "";
-  inputRead.value = "";
 }
 
 function getRead() {
@@ -117,4 +129,9 @@ function getRead() {
     return true;
   }
   return false;
+}
+
+function updateLocalStorage(arr) {
+  const strBooks = JSON.stringify(arr);
+  localStorage.setItem("local-books", strBooks);
 }
