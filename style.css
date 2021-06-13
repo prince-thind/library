@@ -1,104 +1,153 @@
-:root {
-  text-align: center;
-  color: white;
-}
 * {
   margin: 0;
   padding: 0;
 }
 body {
-  background-color: rgb(0, 5, 1);
+  text-align: center;
+  color: white;
+  background-color: rgb(0, 10, 0);
 }
 .header {
-  background-color: rgb(0, 48, 32);
-  padding: 1.5rem 0 0 0;
+  background-color: rgb(18, 71, 18);
+}
+.heading {
+  padding: 1rem;
+  text-shadow: 1px 1px 1px red;
 }
 .status-bar {
-  display: grid;
-  grid-template-columns: 2fr 3fr 2fr;
-  background-color: rgb(40, 61, 0);
-  margin: 1rem 0 7rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  background-color: hsl(56, 50%, 7%);
+  padding: 1rem;
+}
+.status-bar > div {
+  border: 3px solid black;
+  padding: 1rem 4rem 1rem 4rem;
 }
 .add-book {
-  background-color: rgb(90, 44, 0);
+  background-color: hsl(210, 60%, 30%);
+  padding: 1rem;
   color: white;
-  font-size: 1.5rem;
 }
 .add-book:hover {
   transform: scale(1.1);
+  background-color: hsl(210, 60%, 15%);
+  cursor: pointer;
 }
-.status-bar > p,
-.status-bar > button {
-  border: 3px solid rgb(94, 0, 0);
-  padding: 1rem;
-}
+
 .card-container {
-  width: fit-content;
-  max-width: 70%;
-  margin: 0 auto;
-  border: 3px solid black(51, 51, 0);
+  width: max-content;
+  max-width: 70%; 
+  margin: 7rem auto;
+  border: 3px solid white;
+  background-color: rgb(15, 27, 27);
   display: flex;
   flex-wrap: wrap;
 }
+.card-container:empty::before{
+  content:"empty";
+  padding:1rem;
+  min-width: 2rem;
+  min-height: 7rem;
+  opacity: 0.5;
+}
+.entry-message{
+  padding:2rem;
+}
 .card {
-  border: 3px solid rgb(121, 0, 0);
+  border: 3px solid black;
   font-size: 2rem;
 }
+.card:hover {
+  transform: scale(1.01);
+}
 .title {
-  background-color: rgb(0, 70, 55);
-  padding: 0.1rem;
+  background-color: rgb(16, 23, 58);
+  padding: 0.2rem;
 }
 .author {
   padding: 0.5rem;
-  font-size: 1.5rem;
-  background-color: rgb(70, 46, 0);
+  font-size: 1.1rem;
+  background-color: rgb(25, 31, 65);
 }
 .pages {
   padding: 0.5rem 0 2rem 0;
   font-size: 1.5rem;
+  background-color: rgb(34, 56, 35);
 }
 .read {
   padding: 0.5rem;
   font-size: 1.2rem;
-  background-color: rgb(31, 20, 0);
+  background-color: rgb(23, 32, 24);
 }
 .remove {
   display: block;
   width: 100%;
   padding: 0.5rem;
   font-size: 1.2rem;
-  background-color: rgb(184, 156, 106);
-  border: none;
-  color: rgb(129, 0, 0);
-  transform: scale(0.9);
+  background-color: rgb(240, 176, 176);
+  color: rgb(14, 0, 0);
+  cursor: pointer;
 }
 .remove:hover {
-    transform: scale(1);
+  background-color: rgb(184, 50, 50);
 }
+
+.footer {
+  padding: 2rem;
+  background-color: rgb(0, 20, 0);
+}
+
+/*menu css*/
 .menu {
-  margin: 0 auto;
-  width: 40%;
-  background-color: rgb(90, 44, 0);
-  border-radius: 25px;
-  border: 5px solid rgb(0, 70, 55);
-  padding: 1rem;
   position: absolute;
+  margin: auto;
+  width: 50%;
+  max-width: 20rem;
+  background-color: rgb(30, 53, 82);
+  border: 3px solid black;
+  border-radius: 25px;
+  padding: 2rem;
+  left: 0;
+  right: 0;
   top: 10%;
-  left: 28%;
-  display: none;
-}
-.form {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
 }
 .input-heading {
   margin-bottom: 1rem;
+  border-bottom: 5px solid black;
 }
-.form > label {
+
+.input-fields {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: rgb(0, 0, 43);
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.form>input {
+  min-width: 90%;
+}
+
+.form label {
   text-align: right;
   font-size: 1.1rem;
+}
+.read-span{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.radio-buttons{
+  display: flex;
+  margin: auto;
+}
+.radio-buttons> label{
+  padding: 1rem;
 }
 .buttons {
   display: flex;
@@ -107,4 +156,13 @@ body {
 .buttons > button {
   padding: 0.5rem;
   margin: 0.5rem;
+}
+.buttons > button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+/* js classes*/
+.hidden {
+  visibility: hidden;
 }
