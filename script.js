@@ -1,19 +1,19 @@
-let addButton = document.querySelector(".add-book");
-let menuDiv = document.querySelector(".menu");
-let createButton = document.querySelector(".submit");
-let cancelButton = document.querySelector(".cancel");
-let removeButton = document.querySelector(".remove");
-let inputAuthor = document.querySelector("#input-author");
-let inputTitle = document.querySelector("#input-title");
-let inputPages = document.querySelector("#input-pages");
-let inputRead = document.querySelector("#input-read");
-let cardContainer = document.querySelector(".card-container");
-let totalBooks = document.querySelector(".books-total");
-let booksRead = document.querySelector(".books-read");
-let id = 0;
+const addButton = document.querySelector(".add-book");
+const totalBooks = document.querySelector(".total-books");
+const readBooks = document.querySelector(".read-books");
 
-let books = [];
-//books.push(new Book("title", "author", "pages", "yes"));
+const menuDiv = document.querySelector(".menu");
+const createButton = document.querySelector(".submit");
+const cancelButton = document.querySelector(".cancel");
+const inputTitle = document.querySelector("#input-title");
+const inputAuthor = document.querySelector("#input-author");
+const inputPages = document.querySelector("#input-pages");
+const inputReadYes = document.querySelector("#input-read-yes");
+
+const cardContainer = document.querySelector(".card-container");
+const removeCard = document.querySelector(".remove");
+
+const books = [];
 
 addButton.addEventListener("click", takeInput);
 createButton.addEventListener("click", makeBook);
@@ -25,51 +25,47 @@ class Book {
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.id = id++;
   }
 }
 
 function takeInput() {
-  menuDiv.style.display = "block";
+  menuDiv.classList.toggle("hidden");
   displayBooks();
 }
 
 function makeBook() {
-  let title = inputTitle.value;
-  let author = inputAuthor.value;
-  let pages = inputPages.value;
-  let read = inputRead.value;
-  let book = new Book(title, author, pages, read);
+  const title = inputTitle.value;
+  const author = inputAuthor.value;
+  const pages = inputPages.value;
+  const read = getRead();
+  const book = new Book(title, author, pages, read);
   books.push(book);
   displayBooks();
+
+  menuDiv.classList.toggle("hidden");
   reset();
 }
 
-function removeBook(event) {
-  let index = null;
-  for (book of books) {
-    if (event.target.parentElement.id == book.id) {
-      index = books.indexOf(book);
-    }
-  }
-  books.splice(index, 1);
+function cancel() {
+  menuDiv.classList.toggle("hidden");
   displayBooks();
 }
 
-function cancel() {
-  menuDiv.style.display = "none";
+function removeBook(event) {
+  let index = event.target.parentElement.getAttribute("data-id");
+  books.splice(index, 1);
   displayBooks();
 }
 
 function displayBooks() {
   cardContainer.innerHTML = "";
   for (let book of books) {
-    let card = document.createElement("div");
-    let title = document.createElement("div");
-    let pages = document.createElement("div");
-    let author = document.createElement("div");
-    let read = document.createElement("div");
-    let remove = document.createElement("button");
+    const card = document.createElement("div");
+    const title = document.createElement("div");
+    const pages = document.createElement("div");
+    const author = document.createElement("div");
+    const read = document.createElement("div");
+    const remove = document.createElement("button");
 
     card.classList.add("card");
     pages.classList.add("pages");
@@ -78,13 +74,13 @@ function displayBooks() {
     read.classList.add("read");
     remove.classList.add("remove");
 
-    title.textContent = book.title;
-    author.textContent = book.author;
-    pages.textContent = book.pages;
-    read.textContent = book.read;
-    remove.textContent = "remove";
+    title.textContent = book.title || "??";
+    author.textContent = "Author: " + book.author;
+    pages.textContent = "Pages: " + book.pages;
+    read.textContent = book.read ? "Read: True" : "Read:No";
+    remove.textContent = "Remove?";
 
-    card.id = book.id;
+    card.setAttribute("data-id", books.indexOf(book));
 
     remove.addEventListener("click", removeBook);
 
@@ -95,20 +91,30 @@ function displayBooks() {
     card.appendChild(remove);
     cardContainer.appendChild(card);
   }
+
   updateStatusBar();
 }
+
 function updateStatusBar() {
   let total = books.length;
   let read = books.filter((book) => {
-    return book.read == "yes" || book.read == "true";
+    return book.read;
   }).length;
 
   totalBooks.textContent = `Total Books: ${total}`;
-  booksRead.textContent = `Books Read: ${read}`;
+  readBooks.textContent = `Books Read: ${read}`;
 }
+
 function reset() {
   inputTitle.value = "";
   inputAuthor.value = "";
   inputPages.value = "";
   inputRead.value = "";
+}
+
+function getRead() {
+  if (inputReadYes.checked) {
+    return true;
+  }
+  return false;
 }
