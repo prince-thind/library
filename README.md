@@ -1,2 +1,2 @@
 # library
-a book management web page
+a simple personal books management web page
