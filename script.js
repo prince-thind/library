@@ -16,6 +16,7 @@ form.addEventListener('reset', reset);
 initialize();
 
 function initialize() {
+  cardContainer.innerHTML='';
   if (localStorage.hasOwnProperty('local-books')) {
     const localBooks = localStorage.getItem('local-books');
     books = JSON.parse(localBooks);
