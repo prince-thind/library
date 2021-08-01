@@ -60,12 +60,15 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
+.card-container:empty {
+  display: block;
+  width: max-content;
+  height: 7rem;
+  opacity: 0.5;
+  padding: 1rem;
+}
 .card-container:empty::before {
   content: 'empty';
-  padding: 1rem;
-  min-width: 2rem;
-  min-height: 7rem;
-  opacity: 0.5;
 }
 .entry-message {
   padding: 2rem;
