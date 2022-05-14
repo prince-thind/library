@@ -6,6 +6,7 @@ import Book from "./pages/Book";
 import CreateBook from "./pages/CreateBook";
 import ErrorPage from "./pages/ErrorPage";
 import UpdateBook from "./pages/UpdateBook";
+import Home from "./pages/Home";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <HashRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
+            <Route index element={<Home/>}/>
             <Route path="about" element={<About />} />
             <Route path="books">
               <Route index element={<AllBooks />} />
