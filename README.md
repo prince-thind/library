@@ -1,2 +1,3 @@
 # library
-a simple personal books management web page
+
+Library project made in react
