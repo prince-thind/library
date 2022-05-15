@@ -11,7 +11,7 @@ function AllBooks() {
       <Grid container spacing={2}>
         {books.map((book) => {
           return (
-            <Grid item xs={6} md={3} key={book.id}>
+            <Grid item xs={12} md={4} lg={3} key={book.id}>
               <BookCard book={book} />
             </Grid>
           );
