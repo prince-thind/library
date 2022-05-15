@@ -6,7 +6,7 @@ const data = [
     read: true,
     description:
       "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, sit! Quos incidunt est omnis error labore animi quia enim, praesentium minima maiores veniam architecto, ab qui, exercitationem rerum eaque eveniet dolore sed laborum. Corrupti, illum magnam. Eos perspiciatis iure qui!",
-    reviews: 4.5,
+    rating: 4.5,
     id: 1,
   },
   {
@@ -16,17 +16,17 @@ const data = [
     read: true,
     description:
       "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, sit! Quos incidunt est omnis error labore animi quia enim, praesentium minima maiores veniam architecto, ab qui, exercitationem rerum eaque eveniet dolore sed laborum. Corrupti, illum magnam. Eos perspiciatis iure qui!",
-    reviews: 3.5,
+    rating: 3.5,
     id: 2,
   },
   {
     name: "Book3",
     date: new Date(),
     author: "Author3",
-    read: true,
+    read: false,
     description:
       "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, sit! Quos incidunt est omnis error labore animi quia enim, praesentium minima maiores veniam architecto, ab qui, exercitationem rerum eaque eveniet dolore sed laborum. Corrupti, illum magnam. Eos perspiciatis iure qui!",
-    reviews: 4.5,
+    rating: 4.5,
     id: 3,
   },
   {
@@ -36,8 +36,18 @@ const data = [
     read: true,
     description:
       "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, sit! Quos incidunt est omnis error labore animi quia enim, praesentium minima maiores veniam architecto, ab qui, exercitationem rerum eaque eveniet dolore sed laborum. Corrupti, illum magnam. Eos perspiciatis iure qui!",
-    reviews: 4.0,
+    rating: 4.0,
     id: 4,
+  },
+  {
+    name: "Book5",
+    date: new Date(),
+    author: "Author5",
+    read: false,
+    description:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, sit! Quos incidunt est omnis error labore animi quia enim, praesentium minima maiores veniam architecto, ab qui, exercitationem rerum eaque eveniet dolore sed laborum. Corrupti, illum magnam. Eos perspiciatis iure qui!",
+    rating: 3.5,
+    id: 5,
   },
 ];
 
