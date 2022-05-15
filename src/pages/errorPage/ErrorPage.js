@@ -1,6 +1,7 @@
+import { Navigate } from "react-router-dom";
+
 function ErrorPage() {
-    return <p>error content</p>;
-  }
-  
-  export default ErrorPage;
-  
+  return <Navigate to="/" />;
+}
+
+export default ErrorPage;

@@ -1,8 +1,10 @@
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Grow from "@mui/material/Grow";
+
 import BookForm from "../../commonComponents/BookForm";
-import { useNavigate, useParams } from "react-router-dom";
+
+import { useNavigate, useParams, Navigate } from "react-router-dom";
 import { selectBookById, update } from "../../features/books/booksSlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -11,6 +13,10 @@ function UpdateBook() {
   const book = useSelector((state) => selectBookById(state, id));
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  if (!book) {
+    return <Navigate to="/books" />;
+  }
 
   function updateBook(book) {
     dispatch(update(book));

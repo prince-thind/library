@@ -1,21 +1,20 @@
-import { useSelector } from "react-redux";
-import { useParams } from "react-router";
-import { selectBookById } from "../../features/books/booksSlice";
-
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import Rating from "@mui/material/Rating";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import CancelIcon from "@mui/icons-material/Cancel";
-// import CustomLink from "../../commonComponents/CustomLink";
 import Grow from "@mui/material/Grow";
 import Button from "@mui/material/Button";
 import { red } from "@mui/material/colors";
-import { DateTime } from "luxon";
+
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router";
+import { DateTime } from "luxon";
 
 import DeleteDialog from "./components/DeleteDialog";
+import { selectBookById } from "../../features/books/booksSlice";
 
 function Book() {
   const id = +useParams().id;
@@ -43,7 +42,7 @@ function Book() {
           },
         }}
       >
-        <Paper elevation={2} sx={{ p: 1, width:1 }}>
+        <Paper elevation={2} sx={{ p: 1, width: 1 }}>
           <Typography variant="h2" component="h2">
             {book.name}
           </Typography>

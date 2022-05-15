@@ -1,4 +1,3 @@
-import * as React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -22,7 +21,7 @@ export default function BasicCard() {
           This is a sample project made my me to demonstrate application of
           react+redux with MUI.
           <br />
-          {"Feel free to explore around"}
+          Feel free to explore around
         </Typography>
       </CardContent>
       <CardActions>
@@ -30,7 +29,6 @@ export default function BasicCard() {
           href="https://www.github.com/prince-thind/library"
           target="_blank"
         >
-          {" "}
           Source Code
         </Link>
       </CardActions>
