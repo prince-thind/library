@@ -9,12 +9,12 @@ import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 
 export default function BookForm({ book = {}, customHandler }) {
-  const [name, setName] = useState("");
-  const [author, setAuthor] = useState("");
-  const [description, setDescription] = useState("");
-  const [read, setRead] = useState(false);
-  const [rating, setRating] = useState(0);
-
+  const [name, setName] = useState(book.name ?? "");
+  const [author, setAuthor] = useState(book.author ?? "");
+  const [description, setDescription] = useState(book.description ?? "");
+  const [read, setRead] = useState(book.read ?? false);
+  const [rating, setRating] = useState(book.rating ?? 0);
+  const id = book.id ?? Date.now();
 
   function onChangeHandler(e) {
     const value = e.target.value;
@@ -33,7 +33,7 @@ export default function BookForm({ book = {}, customHandler }) {
         setRating(+value);
         break;
       case "read":
-        setRead(value==="true");
+        setRead(value === "true");
         break;
       default:
         console.log("something weird happened");
@@ -47,12 +47,11 @@ export default function BookForm({ book = {}, customHandler }) {
       name,
       author,
       description,
-      rating,
       read,
-      id: Date.now(),
+      rating,
+      id,
     };
-    customHandler(book)
-
+    customHandler(book);
   }
 
   return (
@@ -71,6 +70,7 @@ export default function BookForm({ book = {}, customHandler }) {
           name="name"
           label="Book Name"
           variant="standard"
+          value={name}
           onChange={onChangeHandler}
         />
       </Box>
@@ -79,6 +79,7 @@ export default function BookForm({ book = {}, customHandler }) {
           required
           id="book-author"
           name="author"
+          value={author}
           label="Book Author"
           onChange={onChangeHandler}
           variant="standard"
@@ -91,6 +92,7 @@ export default function BookForm({ book = {}, customHandler }) {
           name="description"
           label="Book Description"
           multiline
+          value={description}
           onChange={onChangeHandler}
           variant="standard"
         />
@@ -112,24 +114,26 @@ export default function BookForm({ book = {}, customHandler }) {
           />
         </RadioGroup>
       </Box>
-      {read && <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          mt: 3,
-        }}
-      >
-        <Typography variant="h6" component="span" sx={{ mr: 1 }}>
-          Rating:{" "}
-        </Typography>
-        <Rating
-          name="rating"
-          precision={0.5}
-          value={+rating}
-          onChange={onChangeHandler}
-        />
-      </Box>}
+      {read && (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            mt: 3,
+          }}
+        >
+          <Typography variant="h6" component="span" sx={{ mr: 1 }}>
+            Rating:{" "}
+          </Typography>
+          <Rating
+            name="rating"
+            precision={0.5}
+            value={+rating}
+            onChange={onChangeHandler}
+          />
+        </Box>
+      )}
       <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
         <Button type="submit" variant="contained">
           Submit

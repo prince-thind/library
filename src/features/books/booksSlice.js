@@ -10,7 +10,10 @@ export const booksSlice = createSlice({
       state.push(newBook);
     },
     update: (state, action) => {
-      //update logic
+      const newBook = action.payload;
+      const id = newBook.id;
+      const oldBook = state.find((b) => b.id === id);
+      Object.assign(oldBook,newBook)
     },
     remove: (state, action) => {
       const id = action.payload;

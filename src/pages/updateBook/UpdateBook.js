@@ -1,9 +1,36 @@
-import { useParams } from "react-router";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import Grow from "@mui/material/Grow";
+import BookForm from "../../commonComponents/BookForm";
+import { useNavigate, useParams } from "react-router-dom";
+import { selectBookById, update } from "../../features/books/booksSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function UpdateBook() {
-  const id = useParams().id;
-  if (!id) return <p>no book found</p>;
-  return <p>update book id:{id}</p>;
+  const id = +useParams().id;
+  const book = useSelector((state) => selectBookById(state, id));
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  function updateBook(book) {
+    dispatch(update(book));
+    navigate("/books/" + book.id);
+  }
+
+  return (
+    <Grow in>
+      <Box>
+        <Typography
+          variant="h4"
+          component="h3"
+          sx={{ display: "flex", justifyContent: "center" }}
+        >
+          Update Book- {book.name}
+        </Typography>
+        <BookForm book={book} customHandler={updateBook} />
+      </Box>
+    </Grow>
+  );
 }
 
 export default UpdateBook;
