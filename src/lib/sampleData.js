@@ -1,7 +1,7 @@
 const data = [
   {
     name: "Book1",
-    date: new Date(),
+    date: getDate(1),
     author: "Author1",
     read: true,
     description:
@@ -11,7 +11,7 @@ const data = [
   },
   {
     name: "Book2",
-    date: new Date(),
+    date:getDate(2),
     author: "Author2",
     read: true,
     description:
@@ -21,7 +21,7 @@ const data = [
   },
   {
     name: "Book3",
-    date: new Date(),
+    date: getDate(3),
     author: "Author3",
     read: false,
     description:
@@ -31,7 +31,7 @@ const data = [
   },
   {
     name: "Book4",
-    date: new Date(),
+    date: getDate(4),
     author: "Author4",
     read: true,
     description:
@@ -41,7 +41,7 @@ const data = [
   },
   {
     name: "Book5",
-    date: new Date(),
+    date: getDate(5),
     author: "Author5",
     read: false,
     description:
@@ -50,5 +50,11 @@ const data = [
     id: 5,
   },
 ];
+
+function getDate(offset){
+  const date=new Date();
+  date.setHours(date.getHours()-offset);
+  return date.toISOString();
+}
 
 export default data;

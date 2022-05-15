@@ -6,8 +6,10 @@ import Rating from "@mui/material/Rating";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import CancelIcon from "@mui/icons-material/Cancel";
 import { red } from "@mui/material/colors";
+import { DateTime } from "luxon";
 
 export default function BookCard({ book }) {
+  const timeFromNow = DateTime.fromISO(book.date).toRelative();
   return (
     <Box
       sx={{
@@ -52,7 +54,7 @@ export default function BookCard({ book }) {
         <Typography
           variant="body2"
           component="p"
-          sx={{ color: "text.primary", mt:3, mb:3 }}
+          sx={{ color: "text.primary", mt: 3, mb: 3 }}
         >
           {book.description}
         </Typography>
@@ -66,7 +68,7 @@ export default function BookCard({ book }) {
             justifyContent: "right",
           }}
         >
-          {book.date.toLocaleString()}
+          {timeFromNow}
         </Typography>
       </Paper>
     </Box>
