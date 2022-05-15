@@ -1,12 +1,14 @@
-import { Box } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import Header from "./Header";
-import {Outlet} from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 function Layout() {
   return (
     <Box>
       <Header />
-      <Outlet />
+      <Container sx={{mt:3}}>
+        <Outlet />
+      </Container>
     </Box>
   );
 }

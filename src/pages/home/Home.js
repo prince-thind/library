@@ -1,5 +1,6 @@
+import DashBoardCard from "./components/DashboardCard";
 function Home() {
-  return "Home";
+  return <DashBoardCard />;
 }
 
 export default Home;
