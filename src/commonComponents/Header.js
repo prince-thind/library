@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
@@ -169,13 +169,11 @@ const ResponsiveAppBar = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">
-                    <CustomLink to={setting.url} color="black">
-                      {setting.name}
-                    </CustomLink>
-                  </Typography>
-                </MenuItem>
+                <CustomLink to={setting.url} color="black">
+                  <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting.name}</Typography>
+                  </MenuItem>{" "}
+                </CustomLink>
               ))}
             </Menu>
           </Box>

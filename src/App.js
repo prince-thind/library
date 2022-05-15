@@ -1,12 +1,12 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
-import Layout from "./components/Layout";
-import About from "./pages/About";
-import AllBooks from "./pages/AllBooks";
-import Book from "./pages/Book";
-import CreateBook from "./pages/CreateBook";
-import ErrorPage from "./pages/ErrorPage";
-import UpdateBook from "./pages/UpdateBook";
-import Home from "./pages/Home";
+import Layout from "./commonComponents/Layout";
+import About from "./pages/about/About";
+import AllBooks from "./pages/allBooks/AllBooks";
+import Book from "./pages/book/Book";
+import CreateBook from "./pages/createBook/CreateBook";
+import ErrorPage from "./pages/errorPage/ErrorPage";
+import UpdateBook from "./pages/updateBook/UpdateBook";
+import Home from "./pages/home/Home";
 
 function App() {
   return (
