@@ -7,6 +7,8 @@ import Radio from "@mui/material/Radio";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
+import { useDispatch } from "react-redux";
+import { create } from "../../../features/books/booksSlice";
 
 export default function BookForm({ book = {} }) {
   const [name, setName] = useState("");
@@ -14,6 +16,9 @@ export default function BookForm({ book = {} }) {
   const [description, setDescription] = useState("");
   const [read, setRead] = useState(false);
   const [rating, setRating] = useState(0);
+
+  const dispatch = useDispatch();
+
   const id = book.id;
 
   function onChangeHandler(e) {
@@ -30,10 +35,10 @@ export default function BookForm({ book = {} }) {
         setDescription(value);
         break;
       case "rating":
-        setRating(value);
+        setRating(+value);
         break;
       case "read":
-        setRead(value);
+        setRead(value==="true");
         break;
       default:
         console.log("something weird happened");
@@ -41,11 +46,19 @@ export default function BookForm({ book = {} }) {
     }
   }
 
-  function onSubmitHandler(e){
+  function onSubmitHandler(e) {
     e.preventDefault();
-   //create a book and add to redux store
-   //or
-   //update based on id
+    const book = {
+      name,
+      author,
+      description,
+      rating,
+      read,
+      id: Date.now(),
+    };
+
+    dispatch(create(book));
+    //update based on id
   }
 
   return (
@@ -105,7 +118,7 @@ export default function BookForm({ book = {} }) {
           />
         </RadioGroup>
       </Box>
-      <Box
+      {read && <Box
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -122,7 +135,7 @@ export default function BookForm({ book = {} }) {
           value={+rating}
           onChange={onChangeHandler}
         />
-      </Box>
+      </Box>}
       <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
         <Button type="submit" variant="contained">
           Create

@@ -6,8 +6,8 @@ export const booksSlice = createSlice({
   initialState: sampleData,
   reducers: {
     create: (state, action) => {
-        console.log(action)
-      //create logic
+      const newBook=action.payload;
+      state.push(newBook);
     },
     update: (state, action) => {
       //update logic

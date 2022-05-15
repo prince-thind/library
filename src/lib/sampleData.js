@@ -26,7 +26,7 @@ const data = [
     read: false,
     description:
       "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, sit! Quos incidunt est omnis error labore animi quia enim, praesentium minima maiores veniam architecto, ab qui, exercitationem rerum eaque eveniet dolore sed laborum. Corrupti, illum magnam. Eos perspiciatis iure qui!",
-    rating: 4.5,
+    rating: 0,
     id: 3,
   },
   {
@@ -46,7 +46,7 @@ const data = [
     read: false,
     description:
       "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem, sit! Quos incidunt est omnis error labore animi quia enim, praesentium minima maiores veniam architecto, ab qui, exercitationem rerum eaque eveniet dolore sed laborum. Corrupti, illum magnam. Eos perspiciatis iure qui!",
-    rating: 3.5,
+    rating: 0,
     id: 5,
   },
 ];

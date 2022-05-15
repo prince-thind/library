@@ -32,13 +32,13 @@ export default function BookCard({ book }) {
         >
           - {book.author}
         </Typography>
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Rating
+        <Box sx={{ display: "flex", justifyContent: "space-between", mt:1 }}>
+        { book.read &&  <Rating
             name="read-only"
             value={book.rating}
             readOnly
             precision={0.5}
-          />
+          />}
           <Typography variant="body1" component="span">
             {book.read ? (
               <Box sx={{ display: "flex", alignItems: "center" }}>
