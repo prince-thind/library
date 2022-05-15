@@ -6,14 +6,16 @@ export const booksSlice = createSlice({
   initialState: sampleData,
   reducers: {
     create: (state, action) => {
-      const newBook=action.payload;
+      const newBook = action.payload;
       state.push(newBook);
     },
     update: (state, action) => {
       //update logic
     },
     remove: (state, action) => {
-      //delete logic
+      const id = action.payload;
+      const index = state.findIndex((b) => b.id === id);
+      state.splice(index, 1);
     },
   },
 });
@@ -21,9 +23,9 @@ export const booksSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const { create, update, remove } = booksSlice.actions;
 
-export const selectAllBooks = state => state.books
+export const selectAllBooks = (state) => state.books;
 
 export const selectBookById = (state, bookId) =>
-  state.posts.find(book => book.id === bookId)
+  state.books.find((book) => bookId === book.id);
 
 export default booksSlice.reducer;

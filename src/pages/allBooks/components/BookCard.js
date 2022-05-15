@@ -5,6 +5,7 @@ import Paper from "@mui/material/Paper";
 import Rating from "@mui/material/Rating";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import CancelIcon from "@mui/icons-material/Cancel";
+import CustomLink from '../../../commonComponents/CustomLink'
 import { red } from "@mui/material/colors";
 import { DateTime } from "luxon";
 
@@ -20,6 +21,7 @@ export default function BookCard({ book }) {
         },
       }}
     >
+      <CustomLink to={"/books/"+book.id}>
       <Paper elevation={3} sx={{ p: 1 }}>
         <Typography variant="h5" component="h3">
           {book.name}
@@ -68,9 +70,10 @@ export default function BookCard({ book }) {
             justifyContent: "right",
           }}
         >
-          {timeFromNow}
+          Added {timeFromNow}
         </Typography>
       </Paper>
+      </CustomLink>
     </Box>
   );
 }
