@@ -97,8 +97,8 @@ const ResponsiveAppBar = () => {
               }}
             >
               {pages.map((page) => (
-                <CustomLink to={page.url} color="black">
-                  <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                <CustomLink to={page.url} color="black" key={page.name}>
+                  <MenuItem  onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">{page.name}</Typography>
                   </MenuItem>
                 </CustomLink>
@@ -128,9 +128,9 @@ const ResponsiveAppBar = () => {
             {pages.map((page) => {
               const isActive = page.url === location;
               return (
-                <CustomLink to={page.url}>
+                <CustomLink to={page.url} key={page.name}>
                   <Button
-                    key={page.name}
+                    
                     onClick={handleCloseNavMenu}
                     sx={{
                       my: 2,
@@ -169,7 +169,7 @@ const ResponsiveAppBar = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <CustomLink to={setting.url} color="black">
+                <CustomLink to={setting.url} color="black" key={setting}>
                   <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
                     <Typography textAlign="center">{setting.name}</Typography>
                   </MenuItem>{" "}
