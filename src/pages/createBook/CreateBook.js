@@ -1,9 +1,20 @@
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Grow from "@mui/material/Grow";
-import BookForm from "./components/BookForm";
+import BookForm from "../../commonComponents/BookForm";
+import { create } from "../../features/books/booksSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 function CreateBook() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  function saveBook(book) {
+    dispatch(create(book));
+    navigate("/books/" + book.id);
+  }
+
   return (
     <Grow in>
       <Box>
@@ -14,7 +25,7 @@ function CreateBook() {
         >
           Create a new Book
         </Typography>
-        <BookForm />
+        <BookForm customHandler={saveBook} />
       </Box>
     </Grow>
   );

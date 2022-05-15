@@ -7,19 +7,14 @@ import Radio from "@mui/material/Radio";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
-import { useDispatch } from "react-redux";
-import { create } from "../../../features/books/booksSlice";
 
-export default function BookForm({ book = {} }) {
+export default function BookForm({ book = {}, customHandler }) {
   const [name, setName] = useState("");
   const [author, setAuthor] = useState("");
   const [description, setDescription] = useState("");
   const [read, setRead] = useState(false);
   const [rating, setRating] = useState(0);
 
-  const dispatch = useDispatch();
-
-  const id = book.id;
 
   function onChangeHandler(e) {
     const value = e.target.value;
@@ -56,9 +51,8 @@ export default function BookForm({ book = {} }) {
       read,
       id: Date.now(),
     };
+    customHandler(book)
 
-    dispatch(create(book));
-    //update based on id
   }
 
   return (
@@ -138,7 +132,7 @@ export default function BookForm({ book = {} }) {
       </Box>}
       <Box sx={{ display: "flex", justifyContent: "center", mt: 3 }}>
         <Button type="submit" variant="contained">
-          Create
+          Submit
         </Button>
       </Box>
     </Box>

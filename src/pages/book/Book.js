@@ -13,11 +13,13 @@ import Grow from "@mui/material/Grow";
 import Button from "@mui/material/Button";
 import { red } from "@mui/material/colors";
 import { DateTime } from "luxon";
+import { useNavigate } from "react-router-dom";
 
 import DeleteDialog from "./components/DeleteDialog";
 
 function Book() {
   const id = +useParams().id;
+  const navigate = useNavigate();
   const book = useSelector((state) => selectBookById(state, id));
 
   if (!book) {
@@ -41,7 +43,7 @@ function Book() {
           },
         }}
       >
-        <Paper elevation={2} sx={{ p: 1 }}>
+        <Paper elevation={2} sx={{ p: 1, width:1 }}>
           <Typography variant="h2" component="h2">
             {book.name}
           </Typography>
@@ -96,8 +98,15 @@ function Book() {
             Added {timeFromNow}
           </Typography>
         </Paper>
-        <Button variant="outlined">Update</Button>
-        <DeleteDialog id={book.id}/>
+        <Button
+          variant="outlined"
+          onClick={() => {
+            navigate("/books/update/" + book.id);
+          }}
+        >
+          Update
+        </Button>
+        <DeleteDialog id={book.id} />
       </Box>
     </Grow>
   );
