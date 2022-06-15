@@ -1,34 +1,29 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createEntityAdapter } from "@reduxjs/toolkit";
 import sampleData from "../../lib/sampleData";
+
+const bookAdapter = createEntityAdapter();
 
 export const booksSlice = createSlice({
   name: "books",
   initialState: sampleData,
   reducers: {
-    create: (state, action) => {
-      const newBook = action.payload;
-      state.push(newBook);
-    },
+    create: bookAdapter.addOne,
     update: (state, action) => {
       const newBook = action.payload;
       const id = newBook.id;
-      const oldBook = state.find((b) => b.id === id);
-      Object.assign(oldBook,newBook)
+      const updateObject = { id, changes: newBook }
+      bookAdapter.updateOne(state, updateObject)
     },
-    remove: (state, action) => {
-      const id = action.payload;
-      const index = state.findIndex((b) => b.id === id);
-      state.splice(index, 1);
-    },
+    remove: bookAdapter.removeOne,
   },
 });
 
 // Action creators are generated for each case reducer function
 export const { create, update, remove } = booksSlice.actions;
 
-export const selectAllBooks = (state) => state.books;
+export const selectAllBooks = (state) => Object.values(state.books.entities);
 
 export const selectBookById = (state, bookId) =>
-  state.books.find((book) => bookId === book.id);
+  state.books.entities[bookId]
 
 export default booksSlice.reducer;
