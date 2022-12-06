@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>library</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<body>
+  <header>
+    <h1 class="heading">Library</h1>
+    <div class="status-bar">
+      <div id="total-books" class="bar">Total Books: 0</div>
+      <div class="bar middle-bar"><button id="add-book" data-id="new" class="add-book center-icons">Add Book <span
+            class="material-icons">
+            queue
+          </span></button></div>
+      <div id="read-books" class="bar">Books Read: 0</div>
+    </div>
+  </header>
+  <main class="main">
+    <div class="card-container" id="card-container">
+      <!--cards inserted here with js,sample cards below-->
+      <!-- <div class="card">
+        <div class="title">Title</div>
+        <div class="author">blah</div>
+        <div class="card-body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro, atque?</div>
+        <div class="pages">Pages:0</div>
+        <div class="read read-true center-icons">read<span class="material-icons">
+            check_circle
+          </span></div>
+        <button class="delete center-icons" id="delete"><span class="material-icons">
+            delete
+          </span></button>
+      </div>
+      <div class="card">
+        <div class="title">Title</div>
+        <div class="author">blah</div>
+        <div class="card-body">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro, atque?</div>
+        <div class="pages">Pages:0</div>
+        <div class="read read-false center-icons">read<span class="material-icons">
+            dangerous
+          </span></div>
+        <button class="delete  center-icons" id="delete"><span class="material-icons">
+            delete
+          </span></button>
+      </div> -->
+      <!-- sample cards end -->
+    </div>
+  </main>
+  <!-- option to add book-->
+  <section class="menu hidden" id="menu">
+    <h2 class="input-heading">Please Input details about the Book</h2>
+    <form class="form" id="form">
+      <div class="input-fields">
+        <label for="input-title">Title:</label>
+        <input type="text" id="input-title" name="title" required maxlength="30">
+        <label for="input-author">Author:</label>
+        <input type="text" id="input-author" name="author" maxlength="40" />
+        <label for="input-body">Description:</label>
+        <textarea class="textarea" type="text" id="input-body" name="body" required maxlength="50"></textarea>
+        <label for="input-pages">Total Pages:</label>
+        <input type="number" id="input-pages" name="pages" max="5000" min="1" />
+      </div>
+
+      <fieldset class='read-fieldset'>
+        <legend for="input-read" class="read-legend">Read</legend>
+        <label for="input-radio-yes"> <input type="radio" id="input-read-yes" name="read" value="yes" />Yes</label>
+        <label for="input-radio-yes"> <input type="radio" id="input-read-no" name="read" value="no" checked />No</label>
+
+      </fieldset>
+      <div class="buttons">
+        <button class="submit" type="submit">Submit</button>
+        <button class="cancel" type="reset">Cancel</button>
+      </div>
+
+    </form>
+  </section>
+  <!-- menu section ends here -->
+  <footer class="footer">
+    <div>CopyRight &copy; Prince Thind</div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+
+</html>
