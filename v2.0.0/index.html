@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>library</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="heading">Library</h1>
+      <div class="status-bar">
+        <div class="total-books">Total Books: 0</div>
+        <div><button class="add-book">Add Book</button></div>
+        <div class="read-books">Books Read: 0</div>
+      </div>
+    </header>
+    <main>
+      <div class="card-container">
+        <!--cards inserted here with js,sample care below-->
+        <!--div class="card">
+          <div class="title">Title</div>
+          <div class="author">Author: blah</div>
+          <div class="pages">Pages:0</div>
+          <div class="read">Read: Yes</div>
+          <button class="remove">Remove?</button>
+        </div-->
+        <div class="entry-message">Press the button above to add Books here!</div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div>That's all Folks!</div>
+    </footer>
+
+    <!-- option to add book-->
+    <section class="menu hidden">
+      <h2 class="input-heading">Please Input details about the Book</h2>
+      <form class="form">
+        <div class="input-fields">
+          <label for="input-title">Title:</label>
+          <input type="text" id="input-title" name="input-title" />
+          <label for="input-author">Author:</label>
+          <input type="text" id="input-author" name="input-author" />
+          <label for="input-pages">Number of Pages:</label>
+          <input type="text" id="input-pages" name="input-pages" />
+          <span for="input-read" class="read-span">Read:</span>
+          <div class="radio-buttons">
+            <label for="input-radio-yes">Yes</label>
+            <input type="radio" id="input-read-yes" name="input-read" checked />
+            <label for="input-radio-yes">No</label>
+            <input type="radio" id="input-read-no" name="input-read" />
+          </div>
+        </div>
+      </form>
+      <div class="buttons">
+        <button class="submit">Submit</button>
+        <button class="cancel">Cancel</button>
+      </div>
+    </section>
+  </body>
+  <script src="script.js"></script>
+</html>
